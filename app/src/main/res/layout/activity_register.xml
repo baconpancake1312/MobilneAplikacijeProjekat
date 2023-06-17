@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="434dp"
+            android:layout_above="@+id/registerButton"
+            android:layout_marginBottom="89dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="-4dp"
+                android:gravity="center"
+                android:text="Registracija"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="411dp"
+                android:layout_height="65dp"
+                android:background="#1A03D9C5"
+                android:hint="Email:"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1A03D9C5"
+                android:hint="Korisnicko ime:"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1A03D9C5"
+                android:drawablePadding="10dp"
+                android:hint="Lozinka:"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1A03D9C5"
+                android:drawablePadding="10dp"
+                android:hint="Potvrda lozinke:"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registerButton"
+            android:layout_width="149dp"
+            android:layout_height="63dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="127dp"
+            android:layout_marginBottom="105dp"
+            android:backgroundTint="#6B7EF6"
+            android:text="Registruj se"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

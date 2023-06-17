@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="DisabledEditTextHint" parent="android:TextAppearance">
+        <item name="android:textColor">@color/disabled_hint_color</item>
+    </style>
+
+</resources>

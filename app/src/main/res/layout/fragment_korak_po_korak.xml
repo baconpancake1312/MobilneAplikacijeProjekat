@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ikonica_background"
+    tools:context=".fragments.KorakPoKorakFragment">
+
+    <RelativeLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#141932"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@+id/asocijacijeTime"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Igrac 1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/asocijacijeP1Points"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/asocijacijeTime"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="40"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/asocijacijeProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="2dp"
+            android:progress="25"
+            android:progressTint="#DDDD94" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/asocijacijeTime"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Igrac 2"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/asocijacijeP2Points"
+                android:layout_width="109dp"
+                android:layout_height="wrap_content"
+                android:text="101"
+                android:textAlignment="center"
+                android:textColor="#50FFCD"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_marginTop="140dp">
+
+        <GridLayout
+            android:id="@+id/grid"
+            android:layout_width="391dp"
+            android:layout_height="435dp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            android:columnCount="1"
+            android:rowCount="8">
+
+            <TextView
+                android:id="@+id/hint1"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="First-person shooter game set in a space station in the future."
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint2"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Developed by Looking Glass Technologies and published by Origin Systems."
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint3"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Released in 1994 for MS-DOS and Mac OS, and later for Windows"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint4"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Considered a precursor to the Bioshock series"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint5"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Features a female AI antagonist named SHODAN"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint6"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Has a sequel, released in 1999"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hint7"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="11sp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:text="Remastered version of the game was released in 2020"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </GridLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/grid"
+            android:layout_gravity="bottom"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/solution"
+                android:layout_width="150sp"
+                android:layout_height="50sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="66dp"
+                android:background="@color/buttonPrimary"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="System Shock"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

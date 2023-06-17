@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="backgroundColor">#162635</color>
+    <color name="buttonPrimary">#131B3F</color>
+    <color name="buttonSecondary">#1F2C66</color>
+    <color name="buttonAsocijacijeWriteNow">#CE4A69F4</color>
+    <color name="disabled_hint_color">#88393838</color>
+</resources>
