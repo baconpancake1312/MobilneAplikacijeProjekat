@@ -28,6 +28,6 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_start);
-        getSupportFragmentManager().beginTransaction().add(R.id.gameContainer, new KorakPoKorakFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.gameContainer, new SkockoFragment()).commit();
     }
 }

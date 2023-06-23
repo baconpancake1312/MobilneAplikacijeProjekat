@@ -6,7 +6,6 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +39,7 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
     private TextView scoreTextView;
     private CountDownTimer timer;
     private ProgressBar progressBar;
+    private int round=1;
     ImageButton springButton;
     ImageButton heartButton;
     ImageButton circleButton;
@@ -113,15 +113,15 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
 
 
 
-    int row;
-    int column;
+    int displayRow;
+    int displayColumn;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_skocko, container, false);
-        row = 0;
-        column = -1;
+        displayRow = 0;
+        displayColumn = -1;
         score=0;
         guessedCombination = new char[4];
         progressBar = view.findViewById(R.id.skockoProgressBar);
@@ -267,39 +267,83 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
     }
 
     private void startGame() {
-        Random random = new Random();
-        for (int i = 0; i < combination.length; i++) {
-            int index = random.nextInt(characters.length);
-            combination[i] = characters[index];
+        for (ImageButton button : buttons) {
+            button.setClickable(false);
         }
 
-        tries = 0;
-        score = 0;
-        gameOver = false;
-        playerOneTurn = true;
-        scoreTextView.setText("0");
-        timer = new CountDownTimer(30000, 1000) {
+        timer = new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText("Time: " + millisUntilFinished / 1000);
-                progressBar.setMax(30);
+                timerTextView.setText("Start:"+(millisUntilFinished / 1000));
+                progressBar.setMax(5);
                 long progress = millisUntilFinished / 1000;
                 progressBar.setProgress((int) progress);
             }
 
             @Override
             public void onFinish() {
-                timerTextView.setText("Time's up!");
-                if (!gameOver) {
-                    endRound();
+                //enable buttons
+                for (ImageButton button : buttons) {
+                    button.setClickable(true);
                 }
+                displayColumn = -1;
+                displayRow = 0;
+                guessedCombinationIndex = -1;
+                tries = 0;
+                score = 0;
+                gameOver = false;
+                playerOneTurn = true;
+
+                Random random = new Random();
+                for (int i = 0; i < combination.length; i++) {
+                    int index = random.nextInt(characters.length);
+                    combination[i] = characters[index];
+                }
+                //set image of all rows to null
+                for (int i = 0; i < rows.length; i++) {
+                    for (int j = 0; j < rows[i].length; j++) {
+                        rows[i][j].setImageResource(0);
+                    }
+                }
+                //set image of all hints to black circle
+                for (int i = 0; i < hints.length; i++) {
+                    for (int j = 0; j < hints[i].length; j++) {
+                        hints[i][j].setBackgroundResource(R.drawable.black_circle);
+                    }
+                }
+                solution1.setImageResource(0);
+                solution2.setImageResource(0);
+                solution3.setImageResource(0);
+                solution4.setImageResource(0);
+
+                timer = new CountDownTimer(30000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        timerTextView.setText("Time: " + millisUntilFinished / 1000);
+                        progressBar.setMax(30);
+                        long progress = millisUntilFinished / 1000;
+                        progressBar.setProgress((int) progress);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        round++;
+                        if (round > 2) {
+                            gameOver = true;
+                            timer.cancel();
+                        } else {
+                            timer.cancel();
+                            startGame();
+                        }
+                    }
+                }.start();
             }
         }.start();
     }
 
     private void endRound() {
-        if (playerOneTurn) {
-            playerOneTurn = false;
+//        if (playerOneTurn) {
+//            playerOneTurn = false;
             timer = new CountDownTimer(30000, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -317,29 +361,28 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
                     }
                 }
             }.start();
-        } else {
-            if (tries <= 2) {
-                score = 20;
-            } else if (tries <= 4) {
-                score = 15;
-            } else {
-                score = 10;
-            }
-            scoreTextView.setText("Score: " + score);
-            gameOver = true;
-            timer.cancel();
-        }
+//        } else {
+//            if (tries <= 2) {
+//                score = 20;
+//            } else if (tries <= 4) {
+//                score = 15;
+//            } else {
+//                score = 10;
+//            }
+//            scoreTextView.setText("Score: " + score);
+//            timer.cancel();
+//        }
     }
 
-    private void displayCombination(View v) {
+    private void displayInputCombination(View v) {
         ImageButton tempButton = (ImageButton) v;
-        column++;
-        if (column == 4) {
-            row++;
-            column = 0;
+        displayColumn++;
+        if (displayColumn == 4) {
+            displayRow++;
+            displayColumn = 0;
         }
-        if (row == 6) {
-            row = 0;
+        if (displayRow == 6) {
+            displayRow = 0;
             for (int i = 0; i < 5; i++) {
                 rows[i][0].setImageDrawable(null);
                 rows[i][1].setImageDrawable(null);
@@ -347,7 +390,7 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
                 rows[i][3].setImageDrawable(null);
             }
         }
-        rows[row][column].setImageDrawable(tempButton.getBackground());
+        rows[displayRow][displayColumn].setImageDrawable(tempButton.getBackground());
     }
 
     private void displaySolution() {
@@ -407,7 +450,7 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
         }
         else {
             tries++;
-            displayHint(row);
+            displayHint(displayRow);
             if (Arrays.equals(guessedCombination,combination)) {
                 if (tries <= 2) {
                     score = 20;
@@ -419,8 +462,15 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
                 displaySolution();
 
                 scoreTextView.setText(String.valueOf(score));
-                gameOver = true;
-                timer.cancel();
+                    round++;
+                if (round > 2) {
+                    gameOver=true;
+                    return;
+                }
+                else{
+                    timer.cancel();
+                    startGame();
+                }
             }
             if (tries == 6) {
                 displaySolution();
@@ -461,6 +511,7 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(@NonNull View v) {
 
+        displayInputCombination(v);
         if (v.getId()==R.id.spring) {  //{'💎', '⬛', '⚫', '♥','🔺', '⭐'};
             guessCombination("1");
         }
@@ -480,7 +531,7 @@ public class SkockoFragment extends Fragment implements View.OnClickListener {
             guessCombination("6");
 
         }
-        displayCombination(v);
+
     }
     @Override
     public void onDestroyView() {
