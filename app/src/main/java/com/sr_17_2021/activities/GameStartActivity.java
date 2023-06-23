@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.sr_17_2021.R;
 import com.sr_17_2021.fragments.AsocijacijeFragment;
 import com.sr_17_2021.fragments.KorakPoKorakFragment;
+import com.sr_17_2021.fragments.SkockoFragment;
 
 public class GameStartActivity extends AppCompatActivity {
 
@@ -27,9 +28,6 @@ public class GameStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_start);
-        getSupportFragmentManager().beginTransaction().add(R.id.gameContainer, new AsocijacijeFragment()).commit();
-    }
-    public void showAsocijacije(View view) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.gameContainer, new AsocijacijeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.gameContainer, new KorakPoKorakFragment()).commit();
     }
 }

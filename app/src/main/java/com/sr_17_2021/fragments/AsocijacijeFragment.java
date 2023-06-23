@@ -338,7 +338,7 @@ public class AsocijacijeFragment extends Fragment {
         }
         else{
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.gameContainer, new KorakPoKorakFragment())
+                    .replace(R.id.gameContainer, new SkockoFragment())
                     .addToBackStack(null)
                     .commit();
         }
